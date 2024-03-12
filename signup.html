@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <style>
+        body {
+            background-image: url('bgr_register.jpg');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin: 0 0 20px 0;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <h2>ĐĂNG KÝ</h2>
+        <input type="text" placeholder="Tài khoản" id="user">
+        <input type="password" placeholder="Mật khẩu" id="pass">
+        <input type="password" placeholder="Nhập lại mật khẩu" id="pass2">
+        <button type="submit" id="dk">Đăng ký</button>
+        <button type="button" id="dn">Đăng nhập</button>
+    </form>
+    <script>
+        function hasUnicodeCharacters(input) {
+            return /[^\u0021-\u007E]+/.test(input);
+        }
+
+        var registerButton = document.getElementById('dk');
+        registerButton.addEventListener('click', function (even) {
+            even.preventDefault();
+            var user = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value;
+            var pass2 = document.getElementById('pass2').value;
+            if (user == '' || pass == '' || pass2 == '') {
+                alert('Vui lòng điền đầy đủ thông tin!');
+            } else {
+                if (hasUnicodeCharacters(user)) {
+                    alert('Tài khoản chỉ chứa chữ, số và ký tự đặc biệt!');
+                    return;
+                } else {
+                    if (hasUnicodeCharacters(pass)) {
+                        alert('Mật khẩu chỉ chứa chữ, số và ký tự đặc biệt!');
+                        return
+                    } else {
+                        if (pass != pass2) {
+                            alert('Nhập lại mật khẩu không chính xác!');
+                            return;
+                        }else{
+                            if(localStorage.getItem(user)){
+                                alert('Tài khoản đã tồn tại');
+                            }else{
+                                localStorage.setItem(user, pass);
+                                alert('Đăng ký thành công!');
+                                window.location.reload();
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        
+
+
+        });
+    </script>
+</body>
+
+</html>
