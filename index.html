@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 700px;
+        }
+
+        .image_progaming {
+            width: 700px;
+            margin: 0 center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .image_progaming img {
+            width: calc((700px - (2 * 10px)) / 3);
+            margin: 0 5px;
+            display: inline-block;
+            height: 180px;
+        }
+        .image-container {
+            position: relative;
+            width: 700px;
+            
+            margin: 0 auto;
+        }
+
+        .image {
+            width: 100%;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image:first-child {
+            display: block;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <p>Phương, ước mơ trở thành lập trình viên siêu cấp vip pro và hành trình phát triển bản thân</p>
+    <div class="programming_language">
+        <h3>Ngôn ngữ lập trình của tôi</h3>
+        <div class="image_progaming">
+            <img src="C++.jpg" alt="C++">
+            <img src="java.jfif" alt="Java">
+            <img src="js.png" alt="JavaScript">
+        </div>
+        <div>
+            <p>Mình bắt đầu lập trình từ khi còn là học sinh cấp ba, lần đầu tiên tiếp xúc với Pascal qua một
+                buổi học tại lớp tin. Từ những dòng code đầu tiên, mình đã cảm nhận được sức mạnh của công nghệ
+                thông tin và cách mà nó giúp giải quyết vấn đề.</p>
+            <p>Mọi thứ từ đó trở thành niềm vui và hứng thú mới của mình. Vì vậy sau khi tốt nghiệp cấp 3, mình
+                quyết định theo đuổi ngành công nghệ thông tin. Mình đã trải qua một số ngôn ngữ lập trình khác
+                nhau như C++, Java, và gần đây nhất là JavaScript. Mỗi ngôn ngữ đều mang lại những trải nghiệm,
+                hiểu biết sâu rộng hơn về cách thức hoạt động của các ứng dụng.</p>
+        </div>
+    </div>
+    <div class="hnue">
+        <h3>HNUE và những người bạn</h3>
+        <div class="image-container">
+            <img src="hnue.jpg" alt="Image 1" class="image" style="display: block;">
+            <img src="coxuyen.jpg" alt="Image 2" class="image">
+            <img src="qs1.jpg" alt="Image 3" class="image">
+            <img src="qs2.jpg" alt="Image 4" class="image">
+
+            <a class="prev" onclick="changeImage(-1)">⟨</a>
+            <a class="next" onclick="changeImage(1)">⟩</a>
+        </div>
+        <div>
+            <p>Học lực của mình không quá xuất sắc nhưng may mắn mình vẫn đỗ vào Đại học Sư Phạm Hà Nội, môi trường học
+                tập ở đây cũng rất tốt
+                giảng viên đa phần đều là các thầy cô mới ra trường nên rất tâm huyết. Mình cũng kết giao được nhiều mối
+                quan hệ mới, trong học tập được các bạn hỗ trợ rất nhiều
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var images = document.querySelectorAll('.image-container .image');
+        var currentIndex = 0;
+
+        function changeImage(direction) {
+            images[currentIndex].style.display = 'none'; 
+            currentIndex += direction;
+
+            
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            images[currentIndex].style.display = 'block'; 
+        }
+
+
+
+    </script>
+</body>
+
+</html>
